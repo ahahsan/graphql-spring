@@ -1,21 +1,10 @@
 spring:
   application:
-    name: segment
-  sleuth:
-    enabled: true
-    sampler:
-      probability: 1
-  zipkin:
-    enabled: true
-    baseUrl: http://localhost:9411
-    service:
-      name: segment
-    sender:
-      type: web
+    name: graphql-spring
   datasource:
     url: jdbc:postgresql://localhost:5432/test?autoReconnect=true&useSSL=false
-    username: aha
-    password: aDm1n
+    username: test
+    password: test
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
