@@ -1,0 +1,42 @@
+input ImageUpload {
+    name: String!
+    productId: String!
+    tenant: String!
+    title: String!
+    locale: String!
+    payload: String!
+}
+
+enum Resolution {
+    ONEX TWOX
+}
+
+type ImageInfo {
+    resolution: Resolution!
+    location: String!
+}
+
+type ScreenshotInfo {
+    title: String!
+    productId: String!
+    locale: String!
+    image1x: ImageInfo!
+    image2x: ImageInfo!
+
+}
+
+type Screenshots {
+    productId: String!
+    localised : [ScreenshotInfo]
+}
+
+type Query {
+    allScreenshots(productId: String!): Screenshots
+#    screenshotsForLocale(productId: String!, locale: String!): Screenshots
+}
+
+type Mutation {
+    createScreenshot(imgUpload: ImageUpload): ScreenshotInfo
+}
+
+
