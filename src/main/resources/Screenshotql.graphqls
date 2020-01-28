@@ -1,3 +1,4 @@
+"Required for uploading product images"
 input ImageUpload {
     name: String!
     productId: String!
@@ -7,34 +8,44 @@ input ImageUpload {
     payload: String!
 }
 
+"Image Resolution"
 enum Resolution {
     ONEX TWOX
 }
 
+"Product Image information"
 type ImageInfo {
     resolution: Resolution!
     location: String!
 }
 
+"Product Screenshot"
 type ScreenshotInfo {
     title: String!
     productId: String!
     locale: String!
     image1x: ImageInfo!
     image2x: ImageInfo!
-
 }
+
+#fragment ImageDetails on ImageInfo {
+#    resolution location
+#}
+#fragment  ScreenshotDetails on ScreenshotInfo {
+#    title productId locale
+#}
 
 type Screenshots {
     productId: String!
     localised : [ScreenshotInfo]
 }
 
+"query for screenshots"
 type Query {
     allScreenshots(productId: String!): Screenshots
-#    screenshotsForLocale(productId: String!, locale: String!): Screenshots
 }
 
+"create screenshots"
 type Mutation {
     createScreenshot(imgUpload: ImageUpload): ScreenshotInfo
 }
